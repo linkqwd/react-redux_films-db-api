@@ -8,3 +8,9 @@ export const searchFilms = query => {
     response => response.json()
   );
 };
+
+export const searchFilmsImages = filmId => {
+  return fetch(
+    `${BASE_URL}movie/${filmId}/images??language=en-US&api_key=${KEY}`
+  ).then(response => response.json());
+};

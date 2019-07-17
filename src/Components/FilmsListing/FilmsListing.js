@@ -8,7 +8,6 @@ class FilmsListing extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return this.props.filmsList.map(film => {
       return (
         <div key={film.id}>

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import ImagesGallery from "./ImagesGallery";
 
 const FilmDetails = ({ film }) => {
   if (!film)
@@ -18,8 +19,9 @@ const FilmDetails = ({ film }) => {
       <p>Picture:</p>
       <img
         alt={`${film.title}`}
-        src={`http://image.tmdb.org/t/p/w185/${film.poster_path}`}
+        src={`http://image.tmdb.org/t/p/w185${film.poster_path}`}
       />
+      <ImagesGallery filmId={film.id} />
     </div>
   );
 };
