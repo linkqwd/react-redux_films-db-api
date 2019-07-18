@@ -1,11 +1,11 @@
 import { searchFilms } from "../api/api";
 
-const fetchFilms = searchTerm => async dispatch => {
-  const films = await searchFilms(searchTerm);
+const fetchFilms = (searchTerm, page) => async dispatch => {
+  const films = await searchFilms(searchTerm, page);
 
   dispatch({
     type: "FETCH_FILMS",
-    payload: films.results
+    payload: films
   });
 };
 

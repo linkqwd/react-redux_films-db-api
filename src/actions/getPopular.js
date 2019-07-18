@@ -5,7 +5,7 @@ const getPopular = page => async dispatch => {
 
   dispatch({
     type: "FETCH_FILMS",
-    payload: popularFilms.results
+    payload: popularFilms
   });
 };
 

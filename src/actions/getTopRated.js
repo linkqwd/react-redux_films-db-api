@@ -5,7 +5,7 @@ const getTopRated = page => async dispatch => {
 
   dispatch({
     type: "FETCH_FILMS",
-    payload: topRatedFilms.results
+    payload: topRatedFilms
   });
 };
 

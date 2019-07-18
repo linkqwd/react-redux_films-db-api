@@ -8,18 +8,12 @@ class SearchBar extends React.Component {
     searchTerm: ""
   };
 
-  componentDidMount() {
-    if (this.props.location.search)
-      this.props.fetchFilms(this.props.location.search.slice(3));
-  }
-
   handleInputChange = event => {
     this.setState({ searchTerm: event.target.value });
   };
 
   handleFormSubmit = e => {
     e.preventDefault();
-    this.props.fetchFilms(this.state.searchTerm);
     this.props.history.push(`${URL.searchTerm}${this.state.searchTerm}`);
   };
 

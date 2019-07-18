@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getPopular, getTopRated } from "../../actions";
+import { getPopular, getTopRated, getUpcoming } from "../../actions";
+import { URL } from "../../constants";
 
 const Menu = props => {
   return (
@@ -10,8 +11,8 @@ const Menu = props => {
         <li className="nav__item">
           <NavLink
             className="nav__link"
-            onClick={() => props.getPopular(1)}
-            to="/popular"
+            onClick={() => props.getPopular()}
+            to={URL.popular}
           >
             Popular
           </NavLink>
@@ -19,10 +20,19 @@ const Menu = props => {
         <li className="nav__item">
           <NavLink
             className="nav__link"
-            onClick={() => props.getTopRated(1)}
-            to="/top-rated"
+            onClick={() => props.getTopRated()}
+            to={URL.topRated}
           >
             Top rated
+          </NavLink>
+        </li>
+        <li className="nav__item">
+          <NavLink
+            className="nav__link"
+            onClick={() => props.getUpcoming()}
+            to={URL.upcoming}
+          >
+            Upcoming
           </NavLink>
         </li>
       </ul>
@@ -34,6 +44,7 @@ export default connect(
   null,
   {
     getPopular,
-    getTopRated
+    getTopRated,
+    getUpcoming
   }
 )(Menu);

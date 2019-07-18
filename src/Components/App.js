@@ -17,6 +17,7 @@ const App = () => {
         <main className="page__main">
           <Route path={`${URL.popular}`} exact component={FilmsListing} />
           <Route path={`${URL.topRated}`} exact component={FilmsListing} />
+          <Route path={`${URL.upcoming}`} exact component={FilmsListing} />
           <Route path={`${URL.search}`} exact component={FilmsListing} />
           <Route path={`${URL.filmPage}`} exact component={FilmDetails} />
         </main>
