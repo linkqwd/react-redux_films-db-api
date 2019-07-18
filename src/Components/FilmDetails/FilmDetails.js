@@ -1,35 +1,39 @@
 import React from "react";
 import { connect } from "react-redux";
 import ImagesGallery from "./ImagesGallery";
+import { fetchFilmById } from "../../actions";
 
-const FilmDetails = ({ film }) => {
-  if (!film)
-    return (
-      <div>
-        <strong>Details For:</strong>
-        <br /> No selected Films
-      </div>
-    );
+const FilmDetails = props => {
+  const { selectedFilm } = props;
+
+  if (!selectedFilm) {
+    props.fetchFilmById(props.match.params.film_id);
+    return null;
+  }
+
   return (
-    <div>
+    <div key={selectedFilm.id}>
       <strong>Details For:</strong>
-      <h3>{film.title}</h3>
+      <h3>{selectedFilm.title}</h3>
       <p>Overview:</p>
-      <p>{film.overview}</p>
+      <p>{selectedFilm.overview}</p>
       <p>Picture:</p>
       <img
-        alt={`${film.title}`}
-        src={`http://image.tmdb.org/t/p/w185${film.poster_path}`}
+        alt={`${selectedFilm.title}`}
+        src={`http://image.tmdb.org/t/p/w185${selectedFilm.poster_path}`}
       />
-      <ImagesGallery filmId={film.id} />
+      <ImagesGallery filmId={selectedFilm.id} />
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    film: state.selected
+    selectedFilm: state.selected
   };
 };
 
-export default connect(mapStateToProps)(FilmDetails);
+export default connect(
+  mapStateToProps,
+  { fetchFilmById }
+)(FilmDetails);

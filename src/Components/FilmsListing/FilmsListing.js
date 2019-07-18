@@ -1,23 +1,40 @@
 import React from "react";
 import { connect } from "react-redux";
-import { selectFilm, fetchFilms } from "../../actions";
+import { Link } from "react-router-dom";
+import { selectFilm, getPopular, getTopRated } from "../../actions";
+import { URL } from "../../constants";
 
 class FilmsListing extends React.Component {
   componentDidMount() {
-    this.props.fetchFilms("www");
+    switch (this.props.match.path) {
+      case URL.popular:
+        this.props.getPopular(1);
+        break;
+      case URL.topRated:
+        this.props.getTopRated(1);
+        break;
+      default:
+        break;
+    }
   }
 
   render() {
-    return this.props.filmsList.map(film => {
-      return (
-        <div key={film.id}>
-          <span>{film.title}</span>
-          <button type="button" onClick={() => this.props.selectFilm(film)}>
-            Select
-          </button>
-        </div>
-      );
-    });
+    return (
+      <ul className="films-listing">
+        {this.props.filmsList.map(film => (
+          <li className="films-listing__item" key={film.id}>
+            <span className="films-listing__title">{film.title}</span>
+            <Link
+              to={`${URL.film}${film.id}`}
+              className="films-listing__link"
+              onClick={() => this.props.selectFilm(film)}
+            >
+              Select
+            </Link>
+          </li>
+        ))}
+      </ul>
+    );
   }
 }
 
@@ -32,6 +49,7 @@ export default connect(
   mapStateToProps,
   {
     selectFilm,
-    fetchFilms
+    getPopular,
+    getTopRated
   }
 )(FilmsListing);

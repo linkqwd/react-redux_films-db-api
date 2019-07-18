@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap&subset=cyrillic");
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #222;
+  line-height: 1.35;
+}
+
+a,
+a:active,
+a:visited {
+  color: #222;
+}
+
+.page__header {
+  background: #f3f3f3;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav__item {
+  display: block;
+}
+
+.nav__link {
+  color: #222;
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
+}
+
+.nav__link.active {
+  text-decoration: underline;
+}
+
+.nav__item + .nav__item {
+  margin-left: 15px;
+}
+
+.page__main {
+  padding: 20px;
+}
+
+.films-listing__item {
+  display: flex;
+  align-items: center;
+}
+
+.films-listing__item + .films-listing__item {
+  margin-top: 5px;
+}
+
+.films-listing__link {
+  display: block;
+  margin-left: 5px;
+  background: #eee;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  padding: 0 10px;
+  transition: all 325ms ease-in-out;
+}
+
+.films-listing__link:hover {
+  background: #fff;
+}

@@ -9,8 +9,26 @@ export const searchFilms = query => {
   );
 };
 
+export const fetchFilmById = filmId => {
+  return fetch(`${BASE_URL}movie/${filmId}?api_key=${KEY}&language=en-US`).then(
+    response => response.json()
+  );
+};
+
 export const searchFilmsImages = filmId => {
   return fetch(
     `${BASE_URL}movie/${filmId}/images??language=en-US&api_key=${KEY}`
+  ).then(response => response.json());
+};
+
+export const getPopular = (page = 1) => {
+  return fetch(
+    `${BASE_URL}movie/popular?api_key=${KEY}&language=en-US&page=${page}`
+  ).then(response => response.json());
+};
+
+export const getTopRated = (page = 1) => {
+  return fetch(
+    `${BASE_URL}movie/top_rated?api_key=${KEY}&language=en-US&page=${page}`
   ).then(response => response.json());
 };

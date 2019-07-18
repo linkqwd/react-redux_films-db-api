@@ -16,14 +16,11 @@ class ImagesGallery extends React.Component {
   render() {
     const { imagesGallery } = this.props;
     return imagesGallery.map((image, i) => (
-      <div>
-        {i}
-        <img
-          key={i}
-          alt="pic"
-          src={`http://image.tmdb.org/t/p/w300${image.file_path}`}
-        />
-      </div>
+      <img
+        key={i}
+        alt={`pic${i}`}
+        src={`http://image.tmdb.org/t/p/w300${image.file_path}`}
+      />
     ));
   }
 }
