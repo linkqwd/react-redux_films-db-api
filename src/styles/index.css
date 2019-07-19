@@ -51,25 +51,106 @@ a:visited {
   padding: 20px;
 }
 
-.films-listing__item {
+/* list-info */
+.list-info {
+  margin-bottom: 15px;
+}
+/* end of list-info */
+
+/* film-page */
+.film-page__wrapper {
   display: flex;
-  align-items: center;
 }
 
-.films-listing__item + .films-listing__item {
-  margin-top: 5px;
+.film-page__image {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.film-page__info {
+  margin-left: 30px;
+}
+
+.film-page__gallery {
+  margin-top: 30px;
+}
+/* end of film-page */
+
+.films-listing {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.films-listing__title {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.films-listing__item {
+  display: flex;
+  align-items: flex-start;
+  min-height: 160px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.films-listing__item:last-child {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.films-listing__image {
+  max-width: 100px;
+  max-width: 100px;
+}
+
+.films-listing__info {
+  margin-left: 20px;
+  flex-grow: 1;
 }
 
 .films-listing__link {
-  display: block;
-  margin-left: 5px;
+  display: inline-block;
+  margin-top: 10px;
   background: #eee;
   border: 1px solid #aaa;
   border-radius: 2px;
   padding: 0 10px;
-  transition: all 325ms ease-in-out;
+  transition: all 225ms ease-in-out;
 }
 
 .films-listing__link:hover {
   background: #fff;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px -3px -3px -3px;
+}
+
+.pagination__item {
+  padding: 2px 6px;
+  background: #eee;
+  border: 1px solid #aaa;
+  transition: all 225ms ease-in-out;
+  cursor: pointer;
+  margin: 0 3px 3px 3px;
+}
+
+.pagination__item:hover {
+  background: #fff;
+}
+
+.pagination__item__active {
+  background: #fff;
+  border: 1px solid #355;
+}
+
+.pagination__item__hiden {
+  background: #000;
 }

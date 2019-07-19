@@ -9,51 +9,32 @@ import {
   getUpcoming
 } from "../../actions";
 import { URL } from "../../constants";
-import debounce from "lodash.debounce";
+import Pagination from "./Pagination";
+import defaultPicture from "../../images/defaultPicture.png";
 
 class FilmsListing extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentPage: 1,
-      error: false,
-      hasMore: true,
-      isLoading: false,
-      films: []
-    };
-
-    window.onscroll = debounce(() => {
-      const {
-        loadFilms,
-        state: { error, isLoading, hasMore }
-      } = this;
-
-      if (error || isLoading || !hasMore) return;
-
-      if (
-        window.innerHeight + document.documentElement.scrollTop ===
-        document.documentElement.offsetHeight
-      ) {
-        loadFilms();
-      }
-    }, 100);
-  }
-
-  loadFilms = () => {
-    console.log("loading");
-    const n = this.state.currentPage + 1;
-    this.setState({
-      currentPage: n,
-      films: [...this.props.filmsList, ...this.state.films]
-    });
-    this.props.fetchFilms(
-      this.props.location.search.slice(3),
-      this.state.currentPage
-    );
+  state = {
+    currentPage: 1
   };
 
   componentDidMount() {
+    this.getFilmsData();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.currentPage !== prevState.currentPage) {
+      this.getFilmsData();
+    }
+
+    if (this.props.location.search !== prevProps.location.search) {
+      this.props.fetchFilms(
+        this.props.location.search.slice(3),
+        this.state.currentPage
+      );
+    }
+  }
+
+  getFilmsData = () => {
     switch (this.props.match.path) {
       case URL.popular:
         this.props.getPopular(this.state.currentPage);
@@ -73,42 +54,66 @@ class FilmsListing extends React.Component {
       default:
         break;
     }
-  }
+  };
 
-  componentDidUpdate(prevState, prevProps) {
-    if (this.props.location.search !== prevState.location.search) {
-      this.props.fetchFilms(
-        this.props.location.search.slice(3),
-        this.state.currentPage
-      );
-    }
-  }
+  paginationClickHandler = e => {
+    this.setState({ currentPage: +e.target.dataset.count });
+  };
 
   render() {
-    let { films } = this.state;
-    if (films.length === 0) films = this.props.filmsList;
-    console.log(films);
-
+    console.log(this.props);
     return (
       <React.Fragment>
-        <div>
-          <strong>Total results: </strong>
-          {this.props.totalResults}
+        <div className="list-info">
+          <strong>Total result: </strong>
+          {this.props.totalResults} films
         </div>
+
         <ul className="films-listing">
-          {films.map((film, i) => (
-            <li key={film.id + i} className="films-listing__item">
-              <span className="films-listing__title">{film.title}</span>
+          {this.props.filmsList.map((film, i) => (
+            <li key={film.id} className="films-listing__item">
               <Link
                 to={`${URL.film}${film.id}`}
-                className="films-listing__link"
                 onClick={() => this.props.selectFilm(film)}
               >
-                Select
+                <img
+                  loading="lazy"
+                  className="films-listing__image"
+                  alt={`pic${i}`}
+                  src={
+                    film.poster_path
+                      ? `http://image.tmdb.org/t/p/w200${film.poster_path}`
+                      : defaultPicture
+                  }
+                />
               </Link>
+
+              <div className="films-listing__info">
+                <div className="films-listing__title">{film.title}</div>
+                <div className="">
+                  Rating: {film.vote_average} / Votes: {film.vote_count}
+                </div>
+                <div className="">Release: {film.release_date}</div>
+                <div className="">
+                  Original language: {film.original_language}
+                </div>
+                <Link
+                  to={`${URL.film}${film.id}`}
+                  className="films-listing__link"
+                  onClick={() => this.props.selectFilm(film)}
+                >
+                  More
+                </Link>
+              </div>
             </li>
           ))}
         </ul>
+
+        <Pagination
+          onClick={this.paginationClickHandler}
+          pagesTotal={this.props.totalPages}
+          currentPage={this.state.currentPage}
+        />
       </React.Fragment>
     );
   }

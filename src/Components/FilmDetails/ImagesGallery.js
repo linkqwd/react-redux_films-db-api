@@ -18,7 +18,7 @@ class ImagesGallery extends React.Component {
     return imagesGallery.map((image, i) => (
       <img
         key={i}
-        alt={`pic${i}`}
+        alt={`gallery piece${i}`}
         src={`http://image.tmdb.org/t/p/w300${image.file_path}`}
       />
     ));

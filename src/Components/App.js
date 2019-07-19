@@ -15,11 +15,11 @@ const App = () => {
           <Header />
         </header>
         <main className="page__main">
-          <Route path={`${URL.popular}`} exact component={FilmsListing} />
-          <Route path={`${URL.topRated}`} exact component={FilmsListing} />
-          <Route path={`${URL.upcoming}`} exact component={FilmsListing} />
-          <Route path={`${URL.search}`} exact component={FilmsListing} />
-          <Route path={`${URL.filmPage}`} exact component={FilmDetails} />
+          <Route path={`${URL.popular}`} component={FilmsListing} />
+          <Route path={`${URL.topRated}`} component={FilmsListing} />
+          <Route path={`${URL.upcoming}`} component={FilmsListing} />
+          <Route path={`${URL.search}`} component={FilmsListing} />
+          <Route path={`${URL.filmPage}`} component={FilmDetails} />
         </main>
       </BrowserRouter>
     </div>
