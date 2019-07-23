@@ -12,6 +12,8 @@ const FilmDetails = props => {
     return null;
   }
 
+  console.log(props);
+
   return (
     <div className="film-page" key={selectedFilm.id}>
       <div className="film-page__wrapper">
@@ -28,7 +30,8 @@ const FilmDetails = props => {
           <strong>
             <h3>{selectedFilm.title}</h3>
           </strong>
-
+          <br />
+          <p>Released: {selectedFilm.release_date}</p>
           <br />
           <p>Overview:</p>
           <p>{selectedFilm.overview}</p>

@@ -1,9 +1,5 @@
 import React from "react";
 
-const settings = {
-  visibleItems: 5
-};
-
 const Pagination = ({ pagesTotal, onClick, currentPage }) => {
   const buildPagination = () => {
     let pageItems = [];

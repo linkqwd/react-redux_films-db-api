@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-redux_films-db-api/static/css/main.2e2213b9.chunk.css",
+    "main.js": "/react-redux_films-db-api/static/js/main.56ef3316.chunk.js",
+    "main.js.map": "/react-redux_films-db-api/static/js/main.56ef3316.chunk.js.map",
+    "runtime~main.js": "/react-redux_films-db-api/static/js/runtime~main.7807116e.js",
+    "runtime~main.js.map": "/react-redux_films-db-api/static/js/runtime~main.7807116e.js.map",
+    "static/js/2.d5d5d1a5.chunk.js": "/react-redux_films-db-api/static/js/2.d5d5d1a5.chunk.js",
+    "static/js/2.d5d5d1a5.chunk.js.map": "/react-redux_films-db-api/static/js/2.d5d5d1a5.chunk.js.map",
+    "index.html": "/react-redux_films-db-api/index.html",
+    "precache-manifest.c55a047ad948f868fff975dae5cd98bc.js": "/react-redux_films-db-api/precache-manifest.c55a047ad948f868fff975dae5cd98bc.js",
+    "service-worker.js": "/react-redux_films-db-api/service-worker.js",
+    "static/css/main.2e2213b9.chunk.css.map": "/react-redux_films-db-api/static/css/main.2e2213b9.chunk.css.map"
+  }
+}

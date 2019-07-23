@@ -1,6 +1,7 @@
 import "../styles/reset.css";
 import "../styles/index.css";
 import React from "react";
+import HomePage from "./HomePage/HomePage";
 import Header from "./Header/Header";
 import FilmsListing from "./FilmsListing/FilmsListing";
 import FilmDetails from "./FilmDetails/FilmDetails";
@@ -15,6 +16,7 @@ const App = () => {
           <Header />
         </header>
         <main className="page__main">
+          <Route path={`/`} exact component={HomePage} />
           <Route path={`${URL.popular}`} component={FilmsListing} />
           <Route path={`${URL.topRated}`} component={FilmsListing} />
           <Route path={`${URL.upcoming}`} component={FilmsListing} />

@@ -61,12 +61,11 @@ class FilmsListing extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <React.Fragment>
         <div className="list-info">
           <strong>Total result: </strong>
-          {this.props.totalResults} films
+          {this.props.totalResults ? this.props.totalResults : `searching...`}
         </div>
 
         <ul className="films-listing">
